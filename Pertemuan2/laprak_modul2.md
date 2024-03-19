@@ -114,7 +114,7 @@ lokasi = i;
 cout << "Nilai maksimum adalah " << maks << " berada di Array ke " << lokasi << endl;
 }
 ```
-Kode ini merupakan program C++ untuk membuat dan menampilkan array tiga dimensi. Program ini diawali dengan meminta user memasukkan ukuran untuk masing-masing dimensi (x, y, dan z) dari array. Kemudian, program mendeklarasikan array dengan ukuran sesuai input user. Setelah itu, program meminta user untuk mengisi elemen-elemen array melalui perulangan sebanyak tiga lapis sesuai dengan dimensi array. Terakhir, program menampilkan elemen array dalam dua bentuk: daftar dengan indeks dan tampilan seperti matriks berlapis.
+Kode di atas merupakan program C++ untuk mencari nilai maksimum dan lokasi (indeks) dari suatu array. Program ini dimulai dengan mendeklarasikan variabel maks, a, i, dan lokasi. Kemudian, program meminta user untuk memasukkan panjang array (a). Selanjutnya, program mendeklarasikan array dengan ukuran a. Program kemudian meminta user untuk memasukkan nilai-nilai elemen array. Setelah itu, program mencari nilai maksimum dari array dengan menggunakan perulangan for. Di dalam perulangan, program membandingkan setiap elemen array dengan nilai maks. Jika elemen array lebih besar dari maks, maka nilai maks diperbarui dengan nilai elemen array tersebut dan lokasi diperbarui dengan indeks elemen array.
 
 ## Unguided 
 
@@ -218,7 +218,7 @@ int main() {
 return 0;
 }
 ```
-
+Kode ini merupakan program C++ untuk membuat dan menampilkan array tiga dimensi. Program ini diawali dengan meminta user memasukkan ukuran untuk masing-masing dimensi (x, y, dan z) dari array. Kemudian, program mendeklarasikan array dengan ukuran sesuai input user. Setelah itu, program meminta user untuk mengisi elemen-elemen array melalui perulangan sebanyak tiga lapis sesuai dengan dimensi array. Terakhir, program menampilkan elemen array dalam dua bentuk: daftar dengan indeks dan tampilan seperti matriks berlapis.
 
 
 ### 3. [Buatlah program menu untuk mencari nilai Maksimum, Minimum dan Nilai rata – rata dari suatu array dengan input yang dimasukan oleh user!]
