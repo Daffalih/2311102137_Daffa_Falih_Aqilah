@@ -1984,10 +1984,29 @@ Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktika
 
 ## Kesimpulan
 
+Kode di atas merupakan program linked list non-circular yang menggunakan struktur data node untuk menyimpan data mahasiswa. Program ini memiliki beberapa fungsi utama, yaitu:
 
+Menambah data:
+insertdepan_131(nama_131, nim_131): Menambahkan data di depan linked list.
+insertbelakang_131(nama_131, nim_131): Menambahkan data di belakang linked list.
+inserttengah_131(nama_131, nim_131, posisi_131): Menambahkan data di tengah linked list pada posisi tertentu.
+Mengubah data:
+ubahdepan_131(nama_131, nim_131): Mengubah data di depan linked list.
+ubahbelakang_131(nama_131, nim_131): Mengubah data di belakang linked list.
+ubahtengah_131(nama_131, nim_131, posisi_131): Mengubah data di tengah linked list pada posisi tertentu.
+Menghapus data:
+hapusdepan_131(): Menghapus data di depan linked list.
+hapusbelakang_131(): Menghapus data di belakang linked list.
+hapustengah_131(posisi_131): Menghapus data di tengah linked list pada posisi tertentu.
+Menampilkan data:
+tampilkan_131(): Menampilkan semua data di linked list.
+Menghapus semua data:
+hapuslist_131(): Menghapus semua data di linked list.
+Program ini juga memiliki menu interaktif yang memungkinkan pengguna untuk memilih operasi yang ingin dilakukan.
 
 ## Referensi
 1. Cormen, Thomas H., et al. Introduction to algorithms. MIT press, 2022.
 2. Knuth, Donald E. The art of computer programming, volume 3: Sorting and searching. Addison-Wesley, 2019.
 3. Azar, Yossi, et al. "Circular linked lists: A survey." ACM Computing Surveys 54.2 (2021): 1-34.
 4. Chen, Yajun, et al. "A novel circular linked list based on dynamic memory allocation." Journal of Computer Applications 39.12 (2022): 273-278.
+   
