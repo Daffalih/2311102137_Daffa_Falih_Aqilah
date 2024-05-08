@@ -6,9 +6,9 @@
 using namespace std;
 
 struct Mahasiswa{
-    string nama_150;
-    string nim_150;
-    int nilai_150;
+    string nama_137;
+    string nim_137;
+    int nilai_137;
 };
 
 struct HashNode{
@@ -22,25 +22,25 @@ class HashTable{
     static const int TABLE_SIZE = 10;
     vector<HashNode*>table[TABLE_SIZE];
 
-    int hashFunc_150(const string& nim_150){
+    int hashFunc_137(const string& nim_137){
         int hashVal = 0;
-        for(char c : nim_150){
+        for(char c : nim_137){
             hashVal += c;
         }
         return hashVal % TABLE_SIZE;
     }
 
     public:
-    void insert_150(const Mahasiswa& mahasiswa){
-        int index = hashFunc_150(mahasiswa.nim_150);
+    void insert_137(const Mahasiswa& mahasiswa){
+        int index = hashFunc_137(mahasiswa.nim_137);
         HashNode* newNode = new HashNode(mahasiswa);
         newNode->next = table[index].size() > 0 ? table[index][0] : nullptr;
         table[index].insert(table[index].begin(),newNode);
     }
-    void hapus_150(const string& nim){
-        int index = hashFunc_150(nim);
+    void hapus_137(const string& nim){
+        int index = hashFunc_137(nim);
         for(size_t i=0; i<table[index].size(); i++){
-            if(table[index][i]->data.nim_150 == nim){
+            if(table[index][i]->data.nim_137 == nim){
                 delete table[index][i];
                 table[index].erase(table[index].begin()+i);
                 return;
@@ -50,9 +50,9 @@ class HashTable{
     }
 
     Mahasiswa* searchByNIM(const string& nim){
-        int index = hashFunc_150(nim);
+        int index = hashFunc_137(nim);
         for(size_t i = 0; i <table[index].size(); i++){
-            if(table[index][i]->data.nim_150 == nim){
+            if(table[index][i]->data.nim_137 == nim){
                 return &(table[index][i]->data);
             }
         }
@@ -63,7 +63,7 @@ class HashTable{
         vector<Mahasiswa*> result;
         for(int i = 0; i < TABLE_SIZE; i++){
             for(size_t j = 0; j < table[i].size(); j++){
-                if(table[i][j]->data.nilai_150 >= minNilai && table[i][j]->data.nilai_150 <= maxNilai){
+                if(table[i][j]->data.nilai_137 >= minNilai && table[i][j]->data.nilai_137 <= maxNilai){
                     result.push_back(&(table[i][j]->data));
                 }
             }
@@ -71,12 +71,12 @@ class HashTable{
         return result;
     }
 
-    void tampilkan_150(){
+    void tampilkan_137(){
         cout << "Data Mahasiswa yang ada dalam Hash Table : "<<endl;
         for(int i = 0; i < TABLE_SIZE; i++){
             for (size_t j = 0; j < table[i].size(); j++){
                 Mahasiswa* mhs = &(table[i][j]->data);
-                cout << "Nama Mahasiswa: " << mhs->nama_150 << "\tNIM: " << mhs->nim_150 << "\tNilai: " << mhs->nilai_150 << endl;
+                cout << "Nama Mahasiswa: " << mhs->nama_137 << "\tNIM: " << mhs->nim_137 << "\tNilai: " << mhs->nilai_137 << endl;
             }
         }
     }
@@ -84,8 +84,8 @@ class HashTable{
 };
 
 int main(){
-    HashTable hashTable_150;
-    int pilih_150;
+    HashTable hashTable_137;
+    int pilih_;
 
     menu:
     cout << "================================" <<endl;
@@ -97,22 +97,22 @@ int main(){
     cout << "4. Cari data Mahasiswa berdsarkan rentang nilai"<<endl;
     cout << "5. Tampilkan semua data"<<endl;
     cout << "6. Keluar"<<endl;
-    cout << "Pilih menu diatas : "; cin >> pilih_150;
+    cout << "Pilih menu diatas : "; cin >> pilih_137;
     cout << endl;
 
-    switch(pilih_150){
+    switch(pilih_137){
         case 1 :{
             Mahasiswa mhs;
             cout << "=========================" <<endl;
             cout << "- TAMBAH DATA MAHASISWA -" <<endl;
             cout << "=========================" <<endl;
             cout << "Masukkan Nama Mahasiswa : ";
-            cin >> mhs.nama_150;
+            cin >> mhs.nama_137;
             cout << "Masukkan NIM Mahasiswa : ";
-            cin >> mhs.nim_150;
+            cin >> mhs.nim_137;
             cout << "Masukkan Nilai Mahasiswa : ";
-            cin >> mhs.nilai_150;
-            hashTable_150.insert_150(mhs);
+            cin >> mhs.nilai_137;
+            hashTable_137.insert_137(mhs);
             goto menu;
             break;
         }
@@ -123,7 +123,7 @@ int main(){
             cout << "========================" <<endl;
             cout << "Masukkan NIM untuk menghapus data Mahasiswa : ";
             cin >> nim;
-            hashTable_150.hapus_150(nim);
+            hashTable_137.hapus_137(nim);
             cout << "Data Mahasiswa dengan NIM " << nim << " telah dihapus"<<endl;
             goto menu;
             break;
@@ -135,10 +135,10 @@ int main(){
             cout << "=======================================" <<endl;
             cout << "Masukkan NIM untuk mencari data Mahasiswa: ";
             cin >> nim;
-            Mahasiswa* result = hashTable_150.searchByNIM(nim);
+            Mahasiswa* result = hashTable_137.searchByNIM(nim);
             if(result != nullptr){
                 cout << "Data ditemukan!!"<<endl;
-                cout << "Nama: " << result->nama_150 << "\nNIM: " << result->nim_150 << "\nNilai: " << result->nilai_150 <<endl;
+                cout << "Nama: " << result->nama_137 << "\nNIM: " << result->nim_137 << "\nNilai: " << result->nilai_137 <<endl;
             }else{
                 cout << "Data mahasiswa dengan NIM " << nim << "Tidak dapat ditemukan"<<endl;
             }
@@ -147,15 +147,17 @@ int main(){
         }
         case 4 :{
             int minNilai , maxNilai ;
-            cout << "Tentukan rentang nilai yang ingin dicari!"<<endl;
+            cout << "============================================" <<endl;
+            cout << "- Tentukan Rentang Nilai Yang Ingin Dicari -" <<endl;
+            cout << "============================================" <<endl;
             cout << "Nilai minimal : "; cin >> minNilai;
             cout << "Nilai maksimal : "; cin >> maxNilai;
             cout << "Rentang nilai yang dicari " << minNilai << " sampai " << maxNilai << endl;
-            vector<Mahasiswa*> result = hashTable_150.searchBYRange(minNilai, maxNilai);
+            vector<Mahasiswa*> result = hashTable_137.searchBYRange(minNilai, maxNilai);
             if(result.size() > 0){
                 cout << "Data mahasiswa dalam rentang nilai " << minNilai << " hingga " << maxNilai << ":\n";
                 for(Mahasiswa* mhs : result){
-                    cout << "Nama Mahasiswa: " << mhs->nama_150 << "\tNIM: " << mhs->nim_150 << "\tNilai: "<< mhs->nilai_150 <<endl;
+                    cout << "Nama Mahasiswa: " << mhs->nama_137 << "\tNIM: " << mhs->nim_137 << "\tNilai: "<< mhs->nilai_137 <<endl;
                 }
             }else{
                 cout << "Tidak ada Mahasiswa dalam rentang nilai tersebut "<<endl;
@@ -164,7 +166,7 @@ int main(){
             break;
         }
         case 5 :{
-            hashTable_150.tampilkan_150();
+            hashTable_137.tampilkan_137();
             goto menu;
             break;
         }

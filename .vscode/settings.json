@@ -3,7 +3,8 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "unguided1": "c",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
