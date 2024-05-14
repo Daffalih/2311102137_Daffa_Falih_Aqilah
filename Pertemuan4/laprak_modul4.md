@@ -646,428 +646,394 @@ clearList(): Fungsi ini menghapus semua data dalam linked list.
 ```C++
 // Daffa Falih Aqilah - 2311102137 - S1IF-11-D
 
-// Daffa Falih Aqilah - 2311102137 - S1IF-11-D
-
-#include<iostream>
-#include<iomanip>
-
+#include <iostream>
+#include <iomanip>
 using namespace std;
 
-// Deklarasi struct node
-struct node{
-    string Nama_150;
-    string NIM_150;
+// Deklarasi Struct Node
+struct node {
+    string nama_137;
+    string nim_137;
     node *next;
 };
-    node *head;
-    node *tail;
 
-// Inisialisasi node head & tail
-void Inisialisasi_150(){
+// Deklarasi variabel head dan tail
+node *head;
+node *tail;
+
+// Inisialisasi linked list
+void init_137() {
     head = NULL;
     tail = NULL;
 }
 
-// Mengecek list 
-bool isEmpty_150(){
-    if(head == NULL){
-        return true;
-    } else {
-        return false;
+// Pengecekan apakah linked list kosong
+bool isempty() {
+    return head == NULL;
+}
+// Menghitung jumlah node dalam linked list
+int hitunglist_137() {
+    int jumlah = 0;
+    node *bantu = head;
+    while (bantu != NULL) {
+        jumlah++;
+        bantu = bantu->next;
     }
+    return jumlah;
 }
 
-// Prosedur hitung node
-int HitungNode_150(){
-    node *hitung = head;
-    int jumlah_150 = 0;
-    while (hitung != NULL){
-        hitung = hitung->next;
-        jumlah_150++;
-    }
-    return jumlah_150;
-}
-
-// Prosedur tambah depan untuk menambahkan data diawal
-void TambahDepan_150(string Name, string NIM){
+// Menambah data mahasiswa di depan linked list
+void insertdepan_137(string nama_137, string nim_137) {
+    // Membuat node baru
     node *baru = new node;
-    baru->Nama_150 = Name;
-    baru->NIM_150 = NIM;
+    baru->nama_137 = nama_137;
+    baru->nim_137 = nim_137;
     baru->next = NULL;
-    if(isEmpty_150() == true){
+
+    // Jika linked list kosong
+    if (isempty()) {
         head = tail = baru;
-        tail->next = NULL;
     } else {
         baru->next = head;
         head = baru;
     }
 }
 
-// Prosedur tambah belakang untuk menambahkan data diakhir
-void TambahBelakang_150(string Name, string NIM){
+// Menambah data mahasiswa di belakang linked list
+void insertbelakang_137(string nama_137, string nim_137) {
+    // Membuat node baru
     node *baru = new node;
-    baru->Nama_150 = Name;
-    baru->NIM_150 = NIM;
+    baru->nama_137 = nama_137;
+    baru->nim_137 = nim_137;
     baru->next = NULL;
-    if(isEmpty_150() == true){
+
+    // Jika linked list kosong
+    if (isempty()) {
         head = tail = baru;
-        tail->next = NULL;
     } else {
         tail->next = baru;
         tail = baru;
     }
 }
 
-// Prosedur tambah tengah untuk menambah data di tengah (posisi tertentu)
-void TambahTengah_150(string Name, string NIM, int Posisi){
-    if(Posisi < 1 || Posisi > HitungNode_150()){
-        cout << "posisi berada diluar jangkauan!" << endl;
-    } else if(Posisi == 1){
-        cout << "Posisi bukan posisi tengah!"<< endl;
+// Menambah data mahasiswa di tengah linked list
+void inserttengah_137(string nama_137, string nim_137, int posisi_137) {
+    if (posisi_137 < 1 || posisi_137 > hitunglist_137() + 1) {
+        cout << "Posisi diluar jangkauan" << endl;
+    } else {
+        if (posisi_137 == 1) {
+            insertdepan_137(nama_137, nim_137);
+        } else if (posisi_137 == hitunglist_137() + 1) {
+            insertbelakang_137(nama_137, nim_137);
+        } else {
+            node *baru = new node;
+            baru->nama_137 = nama_137;
+            baru->nim_137 = nim_137;
+
+            node *bantu = head;
+            for (int i = 1; i < posisi_137 - 1; ++i) {
+                bantu = bantu->next;
+            }
+
+            baru->next = bantu->next;
+            bantu->next = baru;
+        }
+    }
+}
+
+// Mengubah data mahasiswa di depan linked list
+void ubahdepan_137(string nama_137, string nim_137) {
+    if (!isempty()) {
+        // Menyimpan data sebelum diubah
+        string nama_sebelum = head->nama_137;
+        string nim_sebelum = head->nim_137;
+
+        // Mengubah data
+        head->nama_137 = nama_137;
+        head->nim_137 = nim_137;
+
+        // Menampilkan informasi
+        cout << "Data telah diubah dari " << nama_sebelum << " menjadi " << nama_137 << endl;
+    } else {
+        cout << "Linked list masih kosong!" << endl;
+    }
+}
+
+// Mengubah data mahasiswa di belakang linked list
+void ubahbelakang_137(string nama_137, string nim_137) {
+    if (!isempty()) {
+        // Menyimpan data sebelum diubah
+        string nama_sebelum = tail->nama_137;
+        string nim_sebelum = tail->nim_137;
+
+        // Mengubah data
+        tail->nama_137 = nama_137;
+        tail->nim_137 = nim_137;
+
+        // Menampilkan informasi
+        cout << "Data telah diubah dari " << nama_sebelum << " menjadi " << nama_137 << endl;
+    } else {
+        cout << "Linked list masih kosong!" << endl;
+    }
+}
+
+// Mengubah data mahasiswa di tengah linked list
+void ubahtengah_137(string nama_137, string nim_137, int posisi_137) {
+    if (posisi_137 < 1 || posisi_137 > hitunglist_137()) {
+        cout << "Posisi diluar jangkauan" << endl;
     } else {
         node *bantu = head;
-        node *baru = new node;
-        baru->Nama_150 = Name;
-        baru->NIM_150 = NIM;
-        int hitung = 1;
-        while(hitung < Posisi - 1){
+        for (int i = 1; i < posisi_137; ++i) {
             bantu = bantu->next;
-            hitung++;
         }
-        baru->next = bantu->next;
-        bantu->next = baru;
+
+        // Menyimpan data sebelum diubah
+        string nama_sebelum = bantu->nama_137;
+        string nim_sebelum = bantu->nim_137;
+
+        // Mengubah data
+        bantu->nama_137 = nama_137;
+        bantu->nim_137 = nim_137;
+
+        // Menampilkan informasi
+        cout << "Data pada posisi " << posisi_137 << " telah diubah dari " << nama_sebelum << " menjadi " << nama_137 << endl;
     }
 }
-
-// Prosedur hapus depan untuk menghapus data pertama
-void HapusDepan_150(){
-    node *hapus;
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
-    } else {
-        if(head->next != NULL){
-            hapus = head;
-            head = head->next;
-            delete hapus;
-        } else {
+// Menghapus data mahasiswa di depan linked list
+void hapusdepan_137() {
+    if (!isempty()) {
+        node *hapus = head;
+        cout << "Data " << head->nama_137 << " berhasil dihapus dari depan" << endl;
+        if (head == tail) {
             head = tail = NULL;
+        } else {
+            head = head->next;
         }
+        delete hapus;
+    } else {
+        cout << "Linked list kosong!" << endl;
     }
 }
 
-// Fungsi tampil data depan untuk menampilkan data diawal
-string TampilDepan_150(){
-    string NamaYangDihapus = "";
-    if(isEmpty_150() == false){
-        NamaYangDihapus = head->Nama_150;
-    } else {
-        cout << "List masih kosong" << endl;
-    }
-    return NamaYangDihapus;
-}
-
-// Prosedur hapus belakang untuk menghapus data diakhir
-void HapusBelakang_150(){
-    node *hapus, *bantu;
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
-    } else {
-        if(head != tail){
-            hapus = tail;
-            bantu = head;
-            while(bantu->next != tail){
+// Menghapus data mahasiswa di belakang linked list
+void hapusbelakang_137() {
+    if (!isempty()) {
+        cout << "Data " << tail->nama_137 << " berhasil dihapus dari belakang" << endl;
+        node *hapus = tail;
+        if (head == tail) {
+            head = tail = NULL;
+        } else {
+            node *bantu = head;
+            while (bantu->next != tail) {
                 bantu = bantu->next;
             }
             tail = bantu;
             tail->next = NULL;
-            delete hapus;
-        } else {
-            head = tail = NULL;
         }
-    }
-}
-
-// Fungsi tampil data belakang untuk menampilkan data pertama
-string TampilBelakang_150(){
-    string NamaYangDihapus = "";
-    if(isEmpty_150() == false){
-        NamaYangDihapus = tail->Nama_150;
-    } else {
-        cout << "List masih kosong" << endl;
-    }
-    return NamaYangDihapus;
-}
-
-
-// Prosedur hapus tengah untuk menghapus data urutan tertentu
-void HapusTengah_150(int posisi){
-    if(posisi < 1 || posisi > HitungNode_150()){ 
-        cout << "Posisi diluar jangkauan" << endl;
-    } else if(posisi == 1){
-        cout << "Posisi bukan posisi tengah" << endl;
-    } else {
-        node *hapus, *bantu, *bantu2;
-        bantu = head;
-        int nomor = 1;
-        while(nomor <= posisi){
-            if(nomor == posisi - 1){
-                bantu2 = bantu;
-            } else if(nomor == posisi){
-                hapus = bantu;
-            }
-            bantu = bantu->next;
-            nomor++; 
-        }
-        bantu2->next = bantu;
         delete hapus;
+    } else {
+        cout << "Linked list kosong!" << endl;
     }
 }
 
-// Fungsi tampil data tengah untuk menampilkan data posisi tertentu
-string TampilTengah_150(int Posisi){
-    string NamaYangDihapus = "";
-    node *tampil = head;
-    node *bantu;
-    if(isEmpty_150() == false){
-        int nomor = 1;
-        while (nomor <= Posisi - 1){
-            if(nomor == Posisi - 1){
-                bantu = tampil;
-            }
-            tampil = tampil->next;
-            nomor++;
-        }
-        bantu->next = tampil;
-        NamaYangDihapus = tampil->Nama_150;       
-    } else {
-        cout << "List masih kosong" << endl;
-    }
-    return NamaYangDihapus;
-}
-
-// Prosedur Ubah depan untuk mengubah data pertama
-void UbahDepan_150(string namaBaru, string NIMbaru){
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
-    } else {
-        head->Nama_150 = namaBaru;
-        head->NIM_150 = NIMbaru;
-    }
-}
-
-// Prosedur ubah belakang untuk mengubah data terakhir
-void UbahBelakang_150(string namaBaru, string NIMbaru){
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
-    } else {
-        tail->Nama_150 = namaBaru;
-        tail->NIM_150 = NIMbaru;
-    }
-}
-
-// Prosedur ubah tengah untuk mengubah data posisi tertentu
-void UbahTengah_150(string namaBaru, string NIMbaru, int Posisi){
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
-    } else {
-        if(Posisi < 1 || Posisi > HitungNode_150()){
-            cout <<"Posisi berada diluar jangkauan!" << endl;
-        } else if(Posisi == 1){
-            cout << "Posisi bukan posisi tengah!" << endl;
+// Menghapus data mahasiswa di tengah linked list
+void hapustengah_137(int posisi_137) {
+    if (!isempty()) {
+        if (posisi_137 < 1 || posisi_137 > hitunglist_137()) {
+            cout << "Posisi diluar jangkauan" << endl;
         } else {
-            node *bantu;
-            bantu = head;
-            int nomor = 1;
-            while(nomor < Posisi){
-                bantu = bantu->next;
-                nomor++;
+            if (posisi_137 == 1) {
+                hapusdepan_137();
+            } else if (posisi_137 == hitunglist_137()) {
+                hapusbelakang_137();
+            } else {
+                node *hapus = head;
+                for (int i = 1; i < posisi_137 - 1; ++i) {
+                    hapus = hapus->next;
+                }
+                node *hapus_node = hapus->next;
+                hapus->next = hapus_node->next;
+                cout << "Data " << hapus_node->nama_137 << " berhasil dihapus dari posisi " << posisi_137 << endl;
+                delete hapus_node;
             }
-           bantu->Nama_150 = namaBaru;
-           bantu->NIM_150 = NIMbaru;
         }
-    }
-}
-
-// Prosedur hapus list untuk menghapus semua list
-void clearList_150(){
-    node *hapus;
-    node *bantu = head;
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
     } else {
-        while(bantu != NULL){
-            hapus = bantu;
-            bantu = bantu->next;
-            delete hapus;   
-        }
-        head = tail = NULL;
+        cout << "Linked list kosong!" << endl;
     }
 }
+// Menghapus data di dalam linked list
+void hapuslist_137() {
+    while (!isempty()) {
+        hapusdepan_137();
+    }
+    cout << "Linked list berhasil dihapus semua!" << endl;
+}
 
-// Prosedur tampil list untuk menampilkan list
-void TampilList_150(){
-    node *bantu = head;
-    if(isEmpty_150() == true){
-        cout << "List masih kosong!" << endl;
+// Menampilkan data dalam linked list
+void tampilkan_137() {
+    if (!isempty()) {
+        node *bantu = head;
+        int nomor_137 = 1; // Variabel untuk nomor indeks atau nomor urut
+        cout << setw(5) << left << "No" << setw(15) << left << "NAMA" << "NIM" << endl;
+        while (bantu != NULL) {
+            cout << setw(5) << left << nomor_137 << setw(15) << left << bantu->nama_137 << bantu->nim_137 << endl;
+            bantu = bantu->next;
+            nomor_137++; // Menginkremen nomor indeks atau nomor urut
+        }
     } else {
-        cout << "------------------------------------------" << endl;
-        cout << "|         Nama        |        Nim       |" << endl;
-        cout << "------------------------------------------" << endl;
-        while(bantu != NULL){
-            cout << "|" << setw(22) << left << bantu->Nama_150 << "|" << setw(17) << left << bantu->NIM_150 << "|" << endl;
-            bantu = bantu->next;
-        }
-        cout << "------------------------------------------" << endl;
+        cout << "Linked list kosong!" << endl;
     }
 }
+int main() {
+    init_137();
+    int pilihan_137;
+    string nama_137;
+    string nim_137;
+    int posisi_137;
 
-int main(){
-    int Posisi, pilih;
-    string nama_150, namaLama_150, NIM_150;
-    Inisialisasi_150();
-    MenuUtama:
-    cout << "------- Program Single Linked List -------" << endl;
-    cout << "-------------- NON-CIRCULAR --------------" << endl; 
-    cout << "| 1.  Tambah Depan                        |" << endl;
-    cout << "| 2.  Tambah Belakang                     |" << endl;
-    cout << "| 3.  TAMBAH Tengah                       |" << endl;
-    cout << "| 4.  Ubah Depan                          |" << endl;
-    cout << "| 5.  Ubah Belakang                       |" << endl;
-    cout << "| 6.  Ubah Tengah                         |" << endl;
-    cout << "| 7.  Hapus Depan                         |" << endl;
-    cout << "| 8.  Hapus Belakang                      |" << endl;
-    cout << "| 9.  Hapus Tengah                        |" << endl;
-    cout << "| 10. Hapus List                          |" << endl;
-    cout << "| 11. Tampilkan                           |" << endl;
-    cout << "| 0.  Keluar                              |" << endl;
-    cout << "| Keluar dari program                     |" << endl;
-    cout << "------------------------------------------" << endl;
-    cout << "Masukkan pilihan anda = ";
-    cin >> pilih;
-    cout << endl;
-    switch(pilih){
-        case 1:
-            cout << "-------------- Tambah Depan --------------" << endl;
-            cout << "Nama Mahasiswa = ";
-            cin >> nama_150;
-            cout << "NIM Mahasiswa = ";
-            cin >> NIM_150;
-            TambahDepan_150(nama_150, NIM_150);
-            cout << "Data berhasil ditambahkan" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 2:
-            cout << "------------ Tambah Belakang -------------" << endl;
-            cout << "Nama Mahasiswa = ";
-            cin >> nama_150;
-            cout << "NIM Mahasiswa = ";
-            cin >> NIM_150;
-            TambahBelakang_150(nama_150, NIM_150);
-            cout << "Data berhasil ditambahkan" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 3:
-            cout << "------------- Tambah Tengah --------------" << endl;
-            cout << "Nama Mahasiswa = ";
-            cin >> nama_150;
-            cout << "NIM Mahasiswa = ";
-            cin >> NIM_150;
-            cout << "Posisi = ";
-            cin >> Posisi;
-            TambahTengah_150(nama_150, NIM_150, Posisi);
-            cout << "Data berhasil ditambahkan" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 4:
-            cout << "----------------- Ubah Depan -----------------" << endl;
-            cout << "Nama Mahasiswa yang ingin diubah = ";
-            cin >> namaLama_150;
-            cout << "Nama mahasiswa yang ingin ditambahkan = "; 
-            cin >> nama_150;
-            cout << "NIM mahasiswa baru = ";
-            cin >> NIM_150;
-            UbahDepan_150(nama_150, NIM_150);
-            cout << "Data mahasiswa " << namaLama_150 << " telah diganti dengan data mahasiswa baru " << nama_150 << " (" << NIM_150 << ")" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 5:
-            cout << "--------------- Ubah Belakang ----------------" << endl;
-            cout << "Nama Mahasiswa yang ingin diubah = ";
-            cin >> namaLama_150;
-            cout << "Nama mahasiswa yang ingin ditambahkan = "; 
-            cin >> nama_150;
-            cout << "NIM mahasiswa baru = ";
-            cin >> NIM_150;
-            UbahBelakang_150(nama_150, NIM_150);
-            cout << "Data mahasiswa " << nama_150 << " telah diganti dengan data mahasiswa baru " << nama_150 << " (" << NIM_150 << ")" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 6:
-            cout << "---------------- Ubah Tengah -----------------" << endl;
-            cout << "Nama Mahasiswa yang ingin diubah = ";
-            cin >> namaLama_150;
-            cout << "Posisi nama yang ingin diubah = ";
-            cin >> Posisi;
-            cout << "Nama mahasiswa yang ingin ditambahkan = "; 
-            cin >> nama_150;
-            cout << "NIM mahasiswa baru = ";
-            cin >> NIM_150;
-            UbahTengah_150(nama_150, NIM_150, Posisi);
-            cout << "Data mahasiswa " << namaLama_150 << " pada posisi ke-" << Posisi << " telah diganti dengan data mahasiswa baru " << nama_150 << " (" << NIM_150 << ")" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 7:
-            cout << "---------------- Hapus Depan -----------------" << endl;
-            HapusDepan_150();
-            cout << "data mahasiswa "<< TampilDepan_150() << " telah dihapus "<<endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 8:
-            cout << "--------------- Hapus Belakang ---------------" << endl;
-            HapusBelakang_150();
-            cout << "data mahasiswa "<< TampilBelakang_150() << "telah dihapus" <<endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 9:
-            cout << "---------------- Hapus Tengah ----------------" << endl;
-            cout << "Masukkan posisi data yang ingin dihapus = ";
-            cin >> Posisi;
-            HapusTengah_150(Posisi);
-            cout << "data mahasiswa "<< TampilTengah_150(Posisi) << "telah dihapus" <<endl; 
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 10:
-            cout << "---------------- Hapus List ----------------" << endl;
-            clearList_150();
-            cout << "list telah terhapus" <<endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 11:
-            cout << "-------------- Tampil List ---------------" << endl;
-            TampilList_150();
-            cout << endl;
-            goto MenuUtama;
-            break;
-        case 0:
-            cout << "Anda keluar dari program" << endl;
-            return 0;
-            break;
-        default:
-            cout << "Pilihan anda tidak tersedia" << endl;
-            cout << endl;
-            goto MenuUtama;
-            break;
-    }
+    do {
+        // Menampilkan menu 
+        cout << "------------------------------------------------------------------------------"<<endl;
+        cout << "                      Program Linked List Non-Circular                        "<<endl;
+        cout << "------------------------------------------------------------------------------"<<endl;
+        cout <<endl;
+        cout << "1.Tambah Depan" << endl;
+        cout << "2.Tambah Belakang" << endl;
+        cout << "3.Tambah Tengah" << endl;
+        cout << "4.Ubah Depan" << endl;
+        cout << "5.Ubah Belakang" << endl;
+        cout << "6.Ubah Tengah" << endl;
+        cout << "7.Hapus Depan" << endl;
+        cout << "8.Hapus Belakang" << endl;
+        cout << "9.Hapus Tengah" << endl;
+        cout << "10.Hapus List" << endl;
+        cout << "11.Tampilkan" << endl;
+        cout << "0.Keluar" << endl;
+        cout << "------------------------------------------------------------------------------"<<endl;
+        cout << "Opsi Pilihan :";cin >> pilihan_137;
+        cout <<endl;
+
+        switch (pilihan_137) {
+            // Menu 1 berfungsi untuk menginputkan nama dan nim ke depan data linked list
+            case 1:
+                cout << "=-----------Tambah Depan-----------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout<<endl;
+                cout << "Data "<<nama_137<<" telah ditambahkan"<<endl;
+                cout << endl;
+                insertdepan_137(nama_137, nim_137);
+                break;
+                // Menu 2 yang berfungsi untuk menginputkan nama dan nim ke bagian belakang dari data linked list
+            case 2:
+                cout << "=-----------Tambah Belakang-----------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout<<endl;
+                cout << "Data "<<nama_137<<" telah ditambahkan"<<endl;
+                cout << endl;
+                insertbelakang_137(nama_137, nim_137);
+                break;
+                // Menu 3 yang berfungsi untuk menginputkan nama dan nim ke bagian tengah ataupun posisi manapun yang diinginkan oleh user dari data linked list
+            case 3:
+                cout << "=-----------Tambah Tengah-----------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout << "Masukkan Posisi :";
+                cin >> posisi_137;
+                cout<<endl;
+                cout << "Data "<<nama_137<<" telah ditambahkan"<<endl;
+                cout << endl;
+                inserttengah_137(nama_137, nim_137, posisi_137);
+                break;
+                // Menu 4 yang berfungsi untuk mengubah data di posisi belakang pada linked list 
+            case 4:
+                cout << "=------------Ubah Depan------------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout << endl;
+                ubahdepan_137(nama_137, nim_137);
+                break;
+                // Menu 5 yang berfungsi untuk mengubah data di posisi belakang pada linked list 
+            case 5:
+                cout << "=------------Ubah Belakang------------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout << endl;
+                ubahbelakang_137(nama_137, nim_137);
+                break;
+                // Menu 6 yang berfungsi untuk mengubah data di posisi tengah atau posisi manapun yang diinginkan oleh user pada linked list 
+            case 6:
+                cout << "=------------Ubah Tengah------------="<<endl;
+                cout << "Masukkan Nama :";
+                cin >> nama_137;
+                cout << "Masukkan NIM :";
+                cin >> nim_137;
+                cout << "Masukkan Posisi :";
+                cin >> posisi_137;
+                cout << endl;
+                ubahtengah_137(nama_137, nim_137, posisi_137);
+                break;
+                // Menu 5 yang berfungsi untuk menghapus data di posisi depan pada linked list 
+            case 7:
+                cout << "=------------Hapus Depan------------="<<endl;
+                cout <<endl;
+                hapusdepan_137();
+                break;
+                // Menu 5 berfungsi untuk menghapus data di posisi belakang pada linked list 
+            case 8:
+                cout << "=-----------Hapus Belakang-----------="<<endl;
+                cout <<endl;
+                hapusbelakang_137();
+                break;
+                // Menu 5 berfungsi untuk menghapus data di posisi tengah atau posisi manapun yang diinginkan user pada linked list 
+            case 9:
+                cout << "=------------Hapus Tengah------------="<<endl;
+                cout <<"Posisi :";
+                cin >>posisi_137;
+                cout <<endl;
+                hapustengah_137(posisi_137);
+                break;
+                // Menu 10 memiliki fungsi untuk menghapus seluruh data yang berada didalam list yang telah diinputkan oleh user
+            case 10:
+                cout << "=------------Hapus List------------="<<endl;
+                hapuslist_137();
+                break;
+                // Menu 11 memiliki fungsi untuk menampilkan seluruh data yang telah di tambahkan oleh user
+            case 11:
+                cout << "------------------------------------------------------------------------------"<<endl;
+                cout << "                        Menampilkan Semua data mahasiswa                      "<<endl;
+                cout << "------------------------------------------------------------------------------"<<endl;
+                cout << "--------------------------------------"<<endl;
+                cout << "            Data Mahasiswa            "<<endl;
+                cout << "--------------------------------------"<<endl;
+                tampilkan_137();
+                break;
+                // Menu 0 berfungsi untuk menutup atau menghentikan program
+            case 0:
+                cout << "------------------------------------------"<<endl;
+                cout << "            Keluar Dari Program           "<<endl;
+                cout << "------------------------------------------"<<endl;
+                break;
+                // Fungsi apabila user menginputkan angka selain yang ada di menu
+            default:
+                cout << "----------------------------------------------"<<endl;
+                cout << "             Pilihan Tidak Valid              "<<endl;
+                cout << "----------------------------------------------"<<endl;
+        }
+    } while (pilihan_137 != 0);
+
+    return 0;
 }
 
 
