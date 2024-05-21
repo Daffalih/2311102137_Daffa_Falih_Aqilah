@@ -273,7 +273,7 @@ HitungAntrian_137: Menghitung jumlah data nama yang ada di dalam antrian.
 HapusAntrian_137: Menghapus seluruh data nama dari antrian.
 LihatAntrian_137: Menampilkan seluruh data nama yang ada di dalam antrian.
 
-Program ini diawali dengan menginisialisasi antrian agar kosong. Kemudian, 3 data nama ditambahkan ke dalam antrian. Selanjutnya, program menampilkan data yang sudah ditambahkan, kemudian menghapus data pertama dari antrian, dan menampilkan kembali data yang ada di dalam antrian. Terakhir, program menghapus seluruh data dari antrian dan menampilkan pesan bahwa antrian kosong.
+Program ini diawali dengan menginisialisasi antrian agar kosong. Kemudian, 3 data nama ditambahkan ke dalam antrian. Selanjutnya, program menampilkan data yang sudah ditambahkan, kemudian menghapus data pertama dari antrian, dan menampilkan kembali data yang ada di dalam antrian. Terakhir, program menghapus seluruh data dari antrian dan menampilkan pesan bahwa antrian kosong .
 
 #### Output Unguided 1:
 ![alt text](image.png)
